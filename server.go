@@ -41,6 +41,14 @@ func checkErr(err error) {
 	}
 }
 
+func getPort() string {
+	port := os.Getenv("PORT")
+	if len(port) == 0 {
+		port = "3000"
+	}
+	return ":" + port
+}
+
 func createUrlTable() {
 	create_table := `
 		CREATE TABLE IF NOT EXISTS urls (
@@ -151,5 +159,5 @@ func main() {
 	}
 
 	handler := new(Handler)
-	log.Fatal(http.ListenAndServe(":3000", handler))
+	log.Fatal(http.ListenAndServe(getPort(), handler))
 }
