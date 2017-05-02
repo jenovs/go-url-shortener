@@ -70,9 +70,9 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	url := r.URL.Path[1:]
 
 	if len(url) == 0 {
-		http.ServeFile(w, r, "./index.html")
+		http.ServeFile(w, r, "index.html")
 	} else if url == "favicon.ico" {
-		http.ServeFile(w, r, "./favicon.ico")
+		http.ServeFile(w, r, "favicon.ico")
 	} else if p := strings.Split(url, "/"); p[0] == "new" {
 		var addr string
 		if len(url) > 4 {
