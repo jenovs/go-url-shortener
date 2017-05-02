@@ -1,0 +1,17 @@
+{
+	"ImportPath": "github.com/jenovs/api-url-shortener",
+	"GoVersion": "go1.8",
+	"GodepVersion": "v79",
+	"Deps": [
+		{
+			"ImportPath": "github.com/go-sql-driver/mysql",
+			"Comment": "v1.3-10-g147bd02",
+			"Rev": "147bd02c2c516cf9a8878cb75898ee8a9eea0228"
+		},
+		{
+			"ImportPath": "github.com/speps/go-hashids",
+			"Comment": "v1.0.0-15-g6fe7228",
+			"Rev": "6fe72284916ad2a7ec7b7dc89fd7b124809b7eb8"
+		}
+	]
+}
