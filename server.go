@@ -89,7 +89,7 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		var response Response
 		response.Url = addr
-		response.Short = "http://127.0.0.1:3000/" + short
+		response.Short = os.Getenv("short_prefix") + short
 		res, _ := json.Marshal(response)
 
 		w.Header().Set("Content-Type", "application/json")
