@@ -148,6 +148,7 @@ func main() {
 	db_addr := os.Getenv("db_addr")
 	db_name := os.Getenv("db_name")
 	db, err = sql.Open("mysql", fmt.Sprintf("%s:%s@%s/%s?charset=utf8", db_user, db_pass, db_addr, db_name))
+
 	checkErr(err)
 
 	defer db.Close()
