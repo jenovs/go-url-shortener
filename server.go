@@ -145,7 +145,9 @@ func main() {
 	// connect to db
 	db_user := os.Getenv("db_user")
 	db_pass := os.Getenv("db_pass")
-	db, err = sql.Open("mysql", fmt.Sprintf("%s:%s@/go_test?charset=utf8", db_user, db_pass))
+	db_addr := os.Getenv("db_addr")
+	db_name := os.Getenv("db_name")
+	db, err = sql.Open("mysql", fmt.Sprintf("%s:%s@%s/%s?charset=utf8", db_user, db_pass, db_addr, db_name))
 	checkErr(err)
 
 	defer db.Close()
