@@ -41,14 +41,6 @@ func checkErr(err error) {
 	}
 }
 
-func getPort() string {
-	port := os.Getenv("PORT")
-	if len(port) == 0 {
-		port = "3000"
-	}
-	return ":" + port
-}
-
 func createUrlTable() {
 	create_table := `
 		CREATE TABLE IF NOT EXISTS urls (
@@ -98,8 +90,9 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	} else {
 		res, err := getFromShort(url)
 		if err == nil {
-
 			http.Redirect(w, r, res, http.StatusSeeOther)
+		} else {
+			http.Redirect(w, r, os.Getenv("short"), http.StatusSeeOther)
 		}
 	}
 }
@@ -119,7 +112,7 @@ func getFromShort(s string) (string, error) {
 	if len(url) > 0 {
 		return url, nil
 	}
-	return "", nil
+	return "", errors.New("Nothing found")
 }
 
 func createShort(s string) (string, error) {
@@ -162,5 +155,5 @@ func main() {
 	}
 
 	handler := new(Handler)
-	log.Fatal(http.ListenAndServe(getPort(), handler))
+	log.Fatal(http.ListenAndServe(":"+os.Getenv("port"), handler))
 }
