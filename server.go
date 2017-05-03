@@ -155,5 +155,5 @@ func main() {
 	}
 
 	handler := new(Handler)
-	log.Fatal(http.ListenAndServe(":"+os.Getenv("port"), handler))
+	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), handler))
 }
